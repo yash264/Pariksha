@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="Assets\favicon.ico">
+    <link rel="icon" type="image.png" sizes="32x32" href="Assets\favicon.ico">
+    <link rel="icon" type="image.png" sizes="16x16" href="Assets\favicon.ico">
+    <style>
+        * {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            padding: 2px;
+        }
+
+        h1 {
+            background-color: rgba(164, 223, 105, 0.692);
+        }
+
+
+        #navigation {
+            text-decoration: none;
+            background-color: rgba(131, 198, 236, 0.623);
+            padding: 6px 30px;
+            overflow: hidden;
+            text-align: left;
+        }
+
+        #navigation a {
+            padding: 8px;
+            text-decoration: none;
+            color: black;
+            border-radius: 5px;
+            margin: 2px 30px;
+        }
+
+        a:hover {
+            background-color: rgb(247, 102, 102);
+        }
+
+        #footer {
+            background-color: rgba(0, 0, 0, 0.945);
+            color: white;
+        }
+
+        #submit {
+            font-size: 23px;
+            text-align: center;
+            padding: 0x;
+            background-color: rgb(233, 114, 77);
+            border-radius: 10px;
+            margin: 4px 610px;
+        }
+
+        #submit:hover {
+            background-color: rgb(162, 92, 228);
+        }
+
+
+        .formError {
+            color: rgba(250, 28, 28, 0.781);
+        }
+    </style>
+    <title>Pariksha</title>
+</head>
+
+<body>
+
+    <h1>Registration Form for Admin</h1>
+    <nav id="navigation">
+        Register as
+        <a href="register.html">Admin</a>
+        <a href="index.html">Student</a>
+    </nav>
+
+    <form id="form" action="admin.html" onsubmit="return validateForm()" method="POST">
+
+        <div class="personal">
+            <h3>Personal Details</h3>
+            <div id="container">
+                <div id="name">
+                    <label for="name">Name : </label>
+                    <input type="text" id="name" name="name" placeholder="Enter your Name" required><b><span
+                            class="formError"></span></b>
+                </div>
+                <br>
+
+                <div id="email">
+                    <label for="email">E-Mail :</label>
+                    <input type="email" id="mail" name="email" placeholder="Enter E-Mail Id" required><b><span
+                            class="formError"></span></b>
+                </div>
+                <br>
+                <div id="adminId">
+                    <label for="adminId">Admin Id :</label>
+                    <input type="text" id="adminId" name="adminId" placeholder="Enter Admin Id" required><b><span
+                            class="formError"></span></b>
+                </div>
+                <br>
+                <div id="tel">
+                    <label for="tel">Phone No. :</label>
+                    <input type="tel" id="tel" name="tel" placeholder="Enter Phone Number" required><b><span
+                            class="formError"></span></b>
+                </div>
+
+                <br>
+
+                <div id="password">
+                    <label for="password">Password :</label>
+                    <input type="password" id="password" placeholder="Enter your password"><b><span
+                            class="formError"></span></b>
+                </div>
+                <br>
+                <div id="conform_password">
+                    <label for="conform_password">Conform Password :</label>
+                    <input type="password" id="conform_password" placeholder="Conform your password"><b><span
+                            class="formError"></span></b>
+                </div>
+            </div>
+        </div>
+        <br>
+        <input type="submit" id="submit" value="Submit">
+    </form>
+
+    <div id="footer">
+        <p>@ 2023 Designed, Developed and Hosted by National Informatics Center NIC</p>
+    </div>
+
+    <script>
+
+        function clearErrors() {
+            errors = document.getElementsByClassName("formError");
+            for (let item of errors) {
+                item.innerHTML = "";
+            }
+        };
+
+        function setError(id, error) {
+            element = document.getElementById(id);
+            element.getElementsByClassName("formError")[0].innerHTML = error;
+        };
+
+        function validateForm() {
+            var returnvalue = true;
+            clearErrors();
+            var name = document.forms["form"]["name"].value;
+            console.log(name);
+            if (name.length < 5) {
+                setError("name", " * length of the name is too short");
+                returnvalue = false;
+            }
+            if (name.length > 20) {
+                setError("name", " * length of the name is too long");
+                returnvalue = false;
+            }
+            var email = document.forms["form"]["email"].value;
+            console.log(email);
+            if (email.charAt(email.length - 4) != ".") {
+                setError("email", " * Email Id entered is not valid");
+                returnvalue = false;
+            }
+
+            var tel = document.forms["form"]["tel"].value;
+            console.log(tel);
+            if (tel.length !== 10) {
+                setError("tel", " * Phone number should be of 10 digits");
+                returnvalue = false;
+            }
+            var password = document.forms["form"]["password"].value;
+            console.log(password);
+            if (password.length < 6) {
+                setError("password", " * Password should be of atleast 6 character");
+                returnvalue = false;
+            }
+            var adminId = document.forms["form"]["adminId"].value;
+            console.log(adminId);
+            if (adminId != 'Yash@123') {
+                setError("adminId", " * Admin Id entered is not valid");
+                returnvalue = false;
+            }
+
+            var conform_password = document.forms["form"]["conform_password"].value;
+            console.log(conform_password);
+            if (conform_password != password) {
+                setError("conform_password", " * Password and Conform Password should be same");
+                returnvalue = false;
+            }
+            return returnvalue;
+        };
+    </script>
+</body>
+
+</html>
