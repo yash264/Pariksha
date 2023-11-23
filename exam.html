@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pariksha</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="Assets\favicon.ico">
+    <link rel="icon" type="image.png" sizes="32x32" href="Assets\favicon.ico">
+    <link rel="icon" type="image.png" sizes="16x16" href="Assets\favicon.ico">
+    <title>This is the title of the web page</title>
+    <style>
+        body {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        * {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            padding: 1px;
+        }
+
+        h1 {
+            background-color: rgba(164, 223, 105, 0.692);
+        }
+
+        #navigation {
+            text-decoration: none;
+            background-color: rgba(131, 198, 236, 0.623);
+            padding: 12px 60px;
+            overflow: hidden;
+            text-align: left;
+        }
+
+        #navigation a {
+            display: block;
+            padding: 4px;
+            text-decoration: none;
+            color: black;
+            float: left;
+            border-radius: 5px;
+            margin: 2px 15px;
+        }
+
+        a:hover {
+            background-color: rgb(247, 102, 102);
+        }
+
+        #footer {
+            background-color: rgba(0, 0, 0, 0.945);
+            color: white;
+        }
+
+        #main {
+            width: 100vh;
+            min-height: 45vh;
+            display: grid;
+            place-items: center;
+            background-color: rgba(236, 245, 198, 0.74);
+        }
+
+        #inner {
+            width: 20vw;
+            background-color: #fff;
+            padding: 2rem 8rem;
+            border-radius: 1rem;
+            box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.4);
+        }
+
+        #myInput{
+            cursor: pointer;
+            width: 75%;
+            height: 120px;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        a {
+            display: inline;
+            flex-wrap: wrap;
+            text-decoration: none;
+            color: black;
+            border-radius: 5px;
+            margin: 0px;
+            text-align: left;
+        }
+
+        #showScore {
+            background-color: #dfe6e9;
+            margin-top: 3rem;
+            padding: 3rem 4rem;
+            box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.4);
+        }
+
+        span {
+            color: red;
+        }
+
+        .btn {
+            font-size: 20px;
+            text-align: center;
+            padding: 0x;
+            background-color: rgb(233, 114, 77);
+            border-radius: 10px;
+            margin: 4px 45px
+        }
+
+        .btn:hover {
+            background-color: rgb(162, 92, 228);
+        }
+
+        .popUp {
+            width: 400px;
+            background: #fff;
+            border-radius: 5px;
+            position: absolute;
+            top: 0%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.1);
+            text-align: center;
+            color: #333;
+            visibility: hidden;
+            transition: transform 0.4s, top 0.4s;
+        }
+
+        .openPopUp {
+            visibility: visible;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .popUp img {
+            width: 100px;
+            margin-top: -50px;
+            border-radius: 50%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .popUp h2 {
+            font-size: 38px;
+            font-weight: 500;
+            margin: 30px 0 10px;
+        }
+
+        .popUp button {
+            width: 100%;
+            margin-top: 50px;
+            padding: 10px 0;
+            background-color: #e96e93d5;
+            color: #fff;
+            border: 0;
+            outline: none;
+            font-size: 18px;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
+        }
+
+
+        #submit {
+            font-size: 23px;
+            text-align: center;
+            padding: 0x;
+            background-color: rgb(233, 114, 77);
+            border-radius: 10px;
+            margin: 4px 110px;
+        }
+
+        #submit:hover {
+            background-color: rgb(162, 92, 228);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to Student Section</h1>
+    <nav id="navigation">
+        <a href="student.html">Back</a>
+    </nav>
+    <div>
+        <h3>Question. What is better name of our country India or Bharat in your opinion ? Explain Briefly.</h3>
+        <textarea name="text" id="myInput" cols="100" rows="6" placeholder="Explain your Answer"></textarea>
+    </div>
+    <span>* Copy and Paste is not allowed.</span>
+    <br>
+    <br>
+    <button id="submit" onclick="openPopUp()">Submit</button>
+        <div class="popUp" id="popUp">
+            <img src="Assets\Tick.png">
+            <h2>Thank you</h2>
+            <p> Your response has been saved.</p>
+            <button type="button" onclick="location.href = 'exam.html'">OK</button>
+        </div>
+    <br>
+    <br>
+
+    <div id="footer">
+        <p>@ 2023 Designed, Developed and Hosted by National Informatics Center NIC</p>
+    </div>
+    <script>
+        window.onload = () => {
+            const myInput = document.getElementById('myInput');
+            myInput.onpaste = e => e.preventDefault();
+            myInput.oncopy = e => e.preventDefault();
+        }
+
+        let popUp = document.getElementById("popUp");
+        function openPopUp() {
+            popUp.classList.add("openPopUp");
+        }
+        
+    </script>
+</body>
+
+</html>

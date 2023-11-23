@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pariksha</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="Assets\favicon.ico">
+    <link rel="icon" type="image.png" sizes="32x32" href="Assets\favicon.ico">
+    <link rel="icon" type="image.png" sizes="16x16" href="Assets\favicon.ico">
+    <style>
+        * {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            padding: 1px;
+        }
+
+        h1 {
+            background-color: rgba(164, 223, 105, 0.692);
+        }
+
+        #navigation {
+            text-decoration: none;
+            background-color: rgba(131, 198, 236, 0.623);
+            padding: 12px 60px;
+            overflow: hidden;
+            text-align: left;
+        }
+
+        #navigation a {
+            display: block;
+            padding: 4px;
+            text-decoration: none;
+            color: black;
+            float: left;
+            border-radius: 5px;
+            margin: 2px 15px;
+        }
+
+        a:hover {
+            background-color: rgb(247, 102, 102);
+        }
+
+        #footer {
+            background-color: rgba(0, 0, 0, 0.945);
+            color: white;
+        }
+
+        #main {
+            width: 100%;
+            display: grid;
+            place-items: center;
+            background-color: rgba(236, 245, 198, 0.74);
+        }
+
+        #inner {
+            background-color: #fff;
+            padding: 2rem 8rem;
+            border-radius: 18px;
+            box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.4);
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        input {
+            cursor: pointer;
+        }
+
+        a {
+            display: inline;
+            flex-wrap: wrap;
+            text-decoration: none;
+            color: black;
+            border-radius: 5px;
+            margin: 0px;
+            text-align: left;
+        }
+
+        span {
+            color: red;
+        }
+
+        .timer {
+            background-color: lightpink;
+            border-radius: 8px;
+        }
+
+        .btn {
+            font-size: 20px;
+            text-align: center;
+            padding: 0x;
+            background-color: rgb(233, 114, 77);
+            border-radius: 10px;
+            margin: 4px 45px
+        }
+
+        .btn:hover {
+            background-color: rgb(162, 92, 228);
+        }
+
+        #submit {
+            font-size: 23px;
+            text-align: center;
+            padding: 0x;
+            background-color: rgb(233, 114, 77);
+            border-radius: 10px;
+            margin: 4px 110px;
+        }
+
+        #submit:hover {
+            background-color: rgb(162, 92, 228);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to Student Section</h1>
+    <nav id="navigation">
+        <a href="student.html">Back</a>
+    </nav>
+    <br>
+    <div id="main">
+        <br>
+        <div id="inner">
+            <inline class="timer">
+                Time : <span id="timer"></span>
+            </inline>
+            <h2 class=question>Question Comes here</h2>
+            <ul>
+                <li>
+                    <input type="radio" name="answer" id="ans1" class="answer">
+                    <label for="ans1" id="option1">Answer Option</label>
+                </li>
+                <li>
+                    <input type="radio" name="answer" id="ans2" class="answer">
+                    <label for="ans2" id="option2">Answer Option</label>
+                </li>
+                <li>
+                    <input type="radio" name="answer" id="ans3" class="answer">
+                    <label for="ans3" id="option3">Answer Option</label>
+                </li>
+                <li>
+                    <input type="radio" name="answer" id="ans4" class="answer">
+                    <label for="ans4" id="option4">Answer Option</label>
+                </li>
+            </ul>
+            <button id="submit">Submit</button>
+        </div>
+        <br>
+    </div>
+    <br>
+    <div id="footer">
+        <p>@ 2023 Designed, Developed and Hosted by National Informatics Center NIC</p>
+    </div>
+    <script>
+        const quiz = [
+            {
+                question: "Q1: What is venue of one day cricket World Cup 2003?",
+                a: "India",
+                b: "Australia",
+                c: "England",
+                d: "South Africa",
+                ans: "ans4"
+            },
+            {
+                question: "Q2: What is the Capital of Ashoka Empire?",
+                a: "Magadha",
+                b: "Patliputra",
+                c: "Vaishali",
+                d: "Indraprastha",
+                ans: "ans2"
+            },
+            {
+                question: "Q3:  Which is the longest river in the world?",
+                a: "Ganga",
+                b: "Thames",
+                c: "Nile",
+                d: "Bhramaputra",
+                ans: "ans3"
+            },
+            {
+                question: "Q4: Which line separates Indian and China?",
+                a: "Durand line",
+                b: "Mac-Mahon line",
+                c: "Mountbeaten line",
+                d: "38th Parallel line",
+                ans: "ans2"
+            },
+            {
+                question: "Q5:  What is the capital city of New Zealand?",
+                a: "Otago",
+                b: "Auckland",
+                c: "Wellington",
+                d: "Nelson",
+                ans: "ans3"
+            },
+            {
+                question: "Q6: At the equator, how fast is the earth's surface turning?",
+                a: "about 100 miles per hour",
+                b: "about 500 miles per hour",
+                c: "about 1000 miles per hour",
+                d: "about 2000 miles per hour",
+                ans: "ans3"
+            },
+            {
+                question: "Q7: In an adult human, how long is the large intestine?",
+                a: "one foot",
+                b: "five feet",
+                c: "twelve feet",
+                d: "twenty feet",
+                ans: "ans2"
+            },
+            {
+                question: "Q8: What is the largest animal ever to live on Earth?",
+                a: "blue whale",
+                b: "giant squid",
+                c: "woolly mammoth",
+                d: "Tyrannosaurus",
+                ans: "ans3"
+            },
+            {
+                question: "Q9: Which of these rocks will float in water?",
+                a: "granite",
+                b: "limestone",
+                c: "shale",
+                d: "pumice",
+                ans: "ans4"
+            },
+            {
+                question: "What important food crop is grown in fields called paddies?",
+                a: "wheat",
+                b: "rye",
+                c: "corn",
+                d: "rice",
+                ans: "ans4"
+            }
+        ];
+        const question = document.querySelector('.question');
+        const option1 = document.querySelector('#option1');
+        const option2 = document.querySelector('#option2');
+        const option3 = document.querySelector('#option3');
+        const option4 = document.querySelector('#option4');
+        const submit = document.querySelector('#submit');
+
+        const answers = document.querySelectorAll('.answer');
+
+        let questionCount = 0;
+        let score = 0;
+        const loadQuestion = () => {
+            const questionList = quiz[questionCount];
+
+            question.innerHTML = questionList.question;
+
+            option1.innerHTML = questionList.a;
+            option2.innerHTML = questionList.b;
+            option3.innerHTML = questionList.c;
+            option4.innerHTML = questionList.d;
+
+        }
+        loadQuestion();
+
+        const getCheckAnswer = () => {
+            let answer;
+
+            answers.forEach((curAnsElem) => {
+                if (curAnsElem.checked) {
+                    answer = curAnsElem.id;
+                }
+            });
+            return answer;
+        }
+
+        const deselectAll = () => {
+            answers.forEach((curAnsElem) => curAnsElem.checked = false);
+        }
+
+        submit.addEventListener("click", () => {
+            const checkedAnswer = getCheckAnswer();
+            console.log(checkedAnswer);
+
+            if (checkedAnswer == quiz[questionCount].ans) {
+                score++;
+            }
+
+            questionCount++;
+            deselectAll();
+            if (questionCount < quiz.length) {
+                loadQuestion();
+            } else {
+                inner.innerHTML = `
+                <h3> You Scored ${score}/${quiz.length} </h3>
+                <p>Congratulations for participating in Quiz</p>
+                <button class="btn" onclick="location.reload()">Reload Test</button>
+                `;
+
+            }
+        });
+
+        var sec = 30;
+        var time = setInterval(myTimer, 1000);
+
+        function myTimer() {
+            document.getElementById("timer").innerHTML = sec + "sec left";
+            sec--;
+            if (sec == -1) {
+                clearInterval(time);
+                alert("Time out!! :(");
+                submit.addEventListener("click", () => {
+                    inner.innerHTML = `
+                        <h3> You Scored ${score}/${quiz.length} </h3>
+                        <p>Congratulations for participating in Quiz</p>
+                        <button class="btn" onclick="location.reload()">Reload Test</button>
+                    `;
+                });
+            }
+        };
+
+    </script>
+</body>
+
+</html>
