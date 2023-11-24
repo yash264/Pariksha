@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pariksha</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="Assets\favicon.ico">
+    <link rel="icon" type="image.png" sizes="32x32" href="Assets\favicon.ico">
+    <link rel="icon" type="image.png" sizes="16x16" href="Assets\favicon.ico">
+    <style>
+        * {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            padding: 1px;
+        }
+
+        h1 {
+            background-color: rgba(164, 223, 105, 0.692);
+        }
+
+        #navigation {
+            text-decoration: none;
+            background-color: rgba(131, 198, 236, 0.623);
+            padding: 12px 60px;
+            overflow: hidden;
+            text-align: left;
+        }
+
+        #navigation a {
+            display: block;
+            padding: 4px;
+            text-decoration: none;
+            color: black;
+            float: left;
+            border-radius: 5px;
+            margin: 2px 15px;
+        }
+
+        a:hover {
+            background-color: rgb(247, 102, 102);
+        }
+
+        #footer {
+            background-color: rgba(0, 0, 0, 0.945);
+            color: white;
+        }
+
+        #main {
+            width: 100%;
+            display: grid;
+            place-items: center;
+            background-color: rgba(236, 245, 198, 0.74);
+        }
+
+        #inner {
+            background-color: #fff;
+            padding: 2rem 8rem;
+            border-radius: 18px;
+            box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.4);
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        input {
+            cursor: pointer;
+        }
+
+        a {
+            display: inline;
+            flex-wrap: wrap;
+            text-decoration: none;
+            color: black;
+            border-radius: 5px;
+            margin: 0px;
+            text-align: left;
+        }
+
+        span {
+            color: red;
+        }
+
+        .timer {
+            background-color: lightpink;
+            border-radius: 8px;
+        }
+
+        .btn {
+            font-size: 20px;
+            text-align: center;
+            padding: 0x;
+            background-color: rgb(233, 114, 77);
+            border-radius: 10px;
+            margin: 4px 45px
+        }
+
+        .btn:hover {
+            background-color: rgb(162, 92, 228);
+        }
+        #instructions{
+            color:black;
+            background-color: lightpink;
+            border-radius: 8px;
+        }
+
+        #submit {
+            font-size: 23px;
+            text-align: center;
+            padding: 0x;
+            background-color: rgb(233, 114, 77);
+            border-radius: 10px;
+            margin: 4px 110px;
+        }
+
+        #submit:hover {
+            background-color: rgb(162, 92, 228);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to Student Section</h1>
+    <nav id="navigation">
+        <a href="student.html">Back</a>
+    </nav>
+    <br>
+    <div id="main">
+        <br>
+        <div id="inner">
+            <h3>Government Services Mock Test</h3>
+            <inline class="instructions">
+                <span id="instructions">Instructions</span>
+            </inline>
+            <inline class="timer">
+                Time : <span id="timer"></span>
+            </inline>
+            <h2 class=question>Question Comes here</h2>
+            <ul>
+                <li>
+                    <input type="radio" name="answer" id="ans1" class="answer">
+                    <label for="ans1" id="option1">Answer Option</label>
+                </li>
+                <li>
+                    <input type="radio" name="answer" id="ans2" class="answer">
+                    <label for="ans2" id="option2">Answer Option</label>
+                </li>
+                <li>
+                    <input type="radio" name="answer" id="ans3" class="answer">
+                    <label for="ans3" id="option3">Answer Option</label>
+                </li>
+                <li>
+                    <input type="radio" name="answer" id="ans4" class="answer">
+                    <label for="ans4" id="option4">Answer Option</label>
+                </li>
+            </ul>
+            <button id="submit">Submit</button>
+        </div>
+        <br>
+    </div>
+    <br>
+    <div id="footer">
+        <p>@ 2023 Designed, Developed and Hosted by National Informatics Center NIC</p>
+    </div>
+    <script>
+        const quiz = [
+            {
+                question: "Q1: If the equation possese solution,then what is the max value of k?<br> ksinx + cos2x = 2k-7",
+                a: "1",
+                b: "2",
+                c: "4",
+                d: "6",
+                ans: "ans4"
+            },
+            {
+                question: "Q2: What is the are of the parrallelogram having diagonals 3i+j-2k and i-3j+4k?",
+                a: "11.18",
+                b: "8.94",
+                c: "8.66",
+                d: "17.36",
+                ans: "ans3"
+            },
+            {
+                question: "Q3:  What is the are bounded between the curves?<br> y=|x-1| and |x|=2",
+                a: "3",
+                b: "4",
+                c: "5",
+                d: "6",
+                ans: "ans3"
+            },
+            {
+                question: "Q4: A vertical tower standing ona levelled feild is mounted with a vertical flag staff of length 3m. From a point on the feild, the angles of elevation of the bottom and tip of the flag are 30 and 60 degress respectively. Which one of the following gives the approximation to the height of tower?",
+                a: "3.90m",
+                b: "4.0m",
+                c: "4.10m",
+                d: "4.25m",
+                ans: "ans3"
+            },
+            {
+                question: "Q5:  What is the probability of 5 Sunday in the month of December? ",
+                a: "1/7",
+                b: "2/7",
+                c: "3/7",
+                d: "None of these",
+                ans: "ans3"
+            },
+            {
+                question: "Q6: Vaccination will make people immune ...... certain diseases for a given period.",
+                a: "against",
+                b: "to",
+                c: "with",
+                d: "for",
+                ans: "ans2"
+            },
+            {
+                question: "Q7: In Thar Region, the shifting sand stones are locally known as",
+                a: "Dhrian",
+                b: "Daurs",
+                c: "Dhoros",
+                d: "Dhaya",
+                ans: "ans1"
+            },
+            {
+                question: "Q8: Which organization prepares the topological maps of India?",
+                a: "Geological Survey of India",
+                b: "Archaelogical Survey of India",
+                c: "Survey of India",
+                d: "National Atlas and thematic mapping organization",
+                ans: "ans3"
+            },
+            {
+                question: "Q9: Speaker of the Lok Sabha may resign his office by writting, adressed to the",
+                a: "President of India",
+                b: "Prime Minister of India",
+                c: "Governor of India",
+                d: "Deputy Speaker of Lok Sabha",
+                ans: "ans4"
+            },
+            {
+                question: "Q10: Nabhah Sprsam Diptam is the motto of ",
+                a: "Chennai Industrial Security Force",
+                b: "Indain Air Force",
+                c: "ISRO",
+                d: "Indian Navy",
+                ans: "ans2"
+            }
+        ];
+        const question = document.querySelector('.question');
+        const option1 = document.querySelector('#option1');
+        const option2 = document.querySelector('#option2');
+        const option3 = document.querySelector('#option3');
+        const option4 = document.querySelector('#option4');
+        const submit = document.querySelector('#submit');
+
+        const answers = document.querySelectorAll('.answer');
+
+        let questionCount = 0;
+        let score = 0;
+        const loadQuestion = () => {
+            const questionList = quiz[questionCount];
+
+            question.innerHTML = questionList.question;
+
+            option1.innerHTML = questionList.a;
+            option2.innerHTML = questionList.b;
+            option3.innerHTML = questionList.c;
+            option4.innerHTML = questionList.d;
+
+        }
+        loadQuestion();
+
+        const getCheckAnswer = () => {
+            let answer;
+
+            answers.forEach((curAnsElem) => {
+                if (curAnsElem.checked) {
+                    answer = curAnsElem.id;
+                }
+            });
+            return answer;
+        }
+
+        const deselectAll = () => {
+            answers.forEach((curAnsElem) => curAnsElem.checked = false);
+        }
+
+        submit.addEventListener("click", () => {
+            const checkedAnswer = getCheckAnswer();
+            console.log(checkedAnswer);
+
+            if (checkedAnswer == quiz[questionCount].ans) {
+                score=score+4;
+            }
+            if (checkedAnswer != quiz[questionCount].ans) {
+                score=score-1;
+            }
+            questionCount++;
+            deselectAll();
+            if (questionCount < quiz.length) {
+                loadQuestion();
+            } else {
+                inner.innerHTML = `
+                <h3> You Scored ${score}/${quiz.length*4} </h3>
+                <p>Congratulations for participating in Quiz</p>
+                <button class="btn" onclick="location.reload()">Reload Test</button>
+                `;
+
+            }
+        });
+
+        var sec = 240;
+        var time = setInterval(myTimer, 1000);
+
+        function myTimer() {
+            document.getElementById("timer").innerHTML = sec + "sec left";
+            sec--;
+            if (sec == -1) {
+                clearInterval(time);
+
+                inner.innerHTML = `
+                    <h3> You Scored ${score}/${quiz.length} </h3>
+                    <p>Congratulations for participating in Quiz</p>
+                    <button class="btn" onclick="location.reload()">Reload Test</button>
+                `;
+
+            }
+        };
+        instructions.addEventListener("click",()=>{
+            inner.innerHTML=`
+                <h3>Please read the instructions carefully</h3>
+                <p>1.Total duration of paper is 4 min.</p>
+                <p> 2.The countdown timer in the top right corner of screen will display the remaining time available for you to complete the examination.</p>
+                <p>3.You are awarded +4 for every correct answer . There is 0 marks for question unattempted.In rest other cases, 1 marks is deducted from your score</p>
+                <button id="submit" onclick="location.reload()">Back</button>
+            `;
+        })
+
+    </script>
+</body>
+
+</html>

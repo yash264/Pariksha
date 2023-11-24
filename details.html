@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pariksha</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="Assets\favicon.ico">
+    <link rel="icon" type="image.png" sizes="32x32" href="Assets\favicon.ico">
+    <link rel="icon" type="image.png" sizes="16x16" href="Assets\favicon.ico">
+    <style>
+        * {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            padding: 1px;
+        }
+
+        h1 {
+            background-color: rgba(164, 223, 105, 0.692);
+        }
+
+        #navigation {
+            text-decoration: none;
+            background-color: rgba(131, 198, 236, 0.623);
+            padding: 12px 60px;
+            overflow: hidden;
+            text-align: left;
+        }
+
+        #navigation a {
+            display: block;
+            padding: 4px;
+            text-decoration: none;
+            color: black;
+            float: left;
+            border-radius: 5px;
+            margin: 2px 15px;
+        }
+
+        a:hover {
+            background-color: rgb(247, 102, 102);
+        }
+
+        #footer {
+            background-color: rgba(0, 0, 0, 0.945);
+            color: white;
+        }
+
+        input {
+            cursor: pointer;
+        }
+
+        #table {
+            text-align: center;
+        }
+
+        main {
+            display: grid;
+        }
+
+        button {
+            padding: 10px 60px;
+            background: #fff;
+            outline: none;
+            border: 0;
+            cursor: pointer;
+            font-size: 22px;
+            font-weight: 500;
+            border-radius: 30px;
+        }
+
+        #submit {
+            font-size: 23px;
+            text-align: center;
+            padding: 0x;
+            background-color: rgb(233, 114, 77);
+            border-radius: 10px;
+            margin: 4px 110px;
+        }
+
+        #submit:hover {
+            background-color: rgb(162, 92, 228);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome to Admin Section</h1>
+    <nav id="navigation">
+        <a href="admin.html">Back</a>
+        <a href=""></a>
+    </nav>
+    <br>
+    <main>
+        Search:<input type="search" id="search" onkeyup="search()" placeholder="Search Students....">
+        <table border="5" bgcolor="white" id="table">
+            <caption><b>Students Details</b></caption>
+            <tr>
+                <th bgcolor="orange">Serial No.</th>
+                <th bgcolor="lightgreen">Name</th>
+                <th bgcolor="lightgreen">Registration No.</th>
+                <th bgcolor="lightgreen">Email Id</th>
+                <th bgcolor="lightgreen">Phone No.</th>
+            </tr>
+            <tr>
+                <td bgcolor="lightblue" >1.</td>
+                <td class="students">Yash Pandey</td>
+                <td class="students">20222068</td>
+                <td >yp5094280@gmail.com</td>
+                <td >9580979737</td>
+            </tr>
+            <tr>
+                <td bgcolor="lightblue" >2.</td>
+                <td class="students">Asmit Verma</td>
+                <td class="students">20222016</td>
+                <td >asmit2016@gmail.com</td>
+                <td >9138178039</td>
+            </tr>
+            <tr>
+                <td bgcolor="lightblue" >3.</td>
+                <td class="students">Tushar Jeph</td>
+                <td class="students">20222055</td>
+                <td >tushar851@gmail.com</td>
+                <td >9183591844</td>
+            </tr>
+            <tr>
+                <td bgcolor="lightblue" >4.</td>
+                <td class="students">Yogesh Garg</td>
+                <td class="students">20222066</td>
+                <td >yogesh4910@gmail.com</td>
+                <td >7392751782</td>
+            </tr>
+            <tr>
+                <td bgcolor="lightblue" >5.</td>
+                <td class="students">Sahil Parwez Ansari</td>
+                <td class="students">20222044</td>
+                <td >sahil173@gmail.com</td>
+                <td >9373292818</td>
+            </tr>
+            <tr>
+                <td bgcolor="lightblue" >6.</td>
+                <td class="students">Tejas Rajput</td>
+                <td class="students">20222054</td>
+                <td >teju192@gmail.com</td>
+                <td >6393427927</td>
+            </tr>
+            <tr>
+                <td bgcolor="lightblue" >7.</td>
+                <td class="students">Purushottam Dubbey</td>
+                <td class="students">20222041</td>
+                <td >itsJay818@gmail.com</td>
+                <td >9193982828</td>
+            </tr>
+            <tr>
+                <td bgcolor="lightblue" >8.</td>
+                <td class="students">Harshad Saroj</td>
+                <td class="students">20222027</td>
+                <td >harshad382@gmail.com</td>
+                <td >9572962728</td>
+            </tr>
+            <tr>
+                <td bgcolor="lightblue" >9.</td>
+                <td class="students">Alok Kumar</td>
+                <td class="students">20222007</td>
+                <td >alok360@gmail.com</td>
+                <td >7352827627</td>
+            </tr>
+            <tr>
+                <td bgcolor="lightblue" >10.</td>
+                <td class="students">Divyanshu Purbey</td>
+                <td class="students">20222064</td>
+                <td >divyanshu1@gmail.com</td>
+                <td >6384972796</td>
+            </tr>
+        </table>
+    </main>
+    <br>
+    <div id="footer">
+        <p>@ 2023 Designed, Developed and Hosted by National Informatics Center NIC</p>
+    </div>
+
+    <script>
+        function search() {
+            let student = document.getElementById("search").value;
+            student = student.toLowerCase();
+            let x = document.getElementsByClassName("students");
+
+            for (i = 0; i <= x.length; i++) {
+                if (!x[i].innerHTML.toLowerCase().includes(student)) {
+                    x[i].style.color = "black";
+                } else {
+                    x[i].style.color = "red";
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

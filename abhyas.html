@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pariksha</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="Assets\favicon.ico">
+    <link rel="icon" type="image.png" sizes="32x32" href="Assets\favicon.ico">
+    <link rel="icon" type="image.png" sizes="16x16" href="Assets\favicon.ico">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        * {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            padding: 1px;
+        }
+
+        h1 {
+            background-color: rgba(164, 223, 105, 0.692);
+        }
+
+        #navigation {
+            text-decoration: none;
+            background-color: rgba(131, 198, 236, 0.623);
+            padding: 12px 60px;
+            overflow: hidden;
+            text-align: left;
+        }
+
+        #navigation a {
+            display: block;
+            padding: 4px;
+            text-decoration: none;
+            color: black;
+            float: left;
+            border-radius: 5px;
+            margin: 2px 15px;
+        }
+
+        a:hover {
+            background-color: rgb(247, 102, 102);
+        }
+
+        #footer {
+            background-color: rgba(0, 0, 0, 0.945);
+            color: white;
+        }
+
+        #main {
+            width: 100%;
+            display: grid;
+            padding: 6px;
+            place-items: center;
+            background-color: rgba(236, 245, 198, 0.74);
+        }
+
+        #inner {
+            background-color: #fff;
+            padding: 2rem 8rem;
+            border-radius: 18px;
+            box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.4);
+        }
+
+        ul {
+            list-style-type: none;
+            display: none;
+        }
+
+        input {
+            cursor: pointer;
+        }
+
+        a {
+            display: inline;
+            flex-wrap: wrap;
+            text-decoration: none;
+            color: black;
+            border-radius: 5px;
+            margin: 0px;
+            text-align: left;
+        }
+
+        li {
+            list-style-type: none;
+        }
+
+        span {
+            color: black;
+        }
+
+        .timer {
+            background-color: lightpink;
+            border-radius: 8px;
+        }
+
+        label.logo {
+            color: rgb(235, 72, 120);
+            
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        .checkbtn {
+            font-size: 30px;
+            color: black;
+            float: right;
+            cursor: pointer;
+        }
+
+        #check {
+            display: none;
+        }
+
+        #category {
+            font-style: italic;
+            background-color: rgba(110, 231, 171, 0.336);
+        }
+
+        .btn {
+            font-size: 20px;
+            text-align: center;
+            padding: 0x;
+            background-color: rgb(233, 114, 77);
+            border-radius: 10px;
+            margin: 4px 45px
+        }
+
+        .btn:hover {
+            background-color: rgb(162, 92, 228);
+        }
+
+        #submit {
+            font-size: 23px;
+            text-align: center;
+            padding: 0x;
+            background-color: rgb(233, 114, 77);
+            border-radius: 10px;
+            margin: 4px 110px;
+        }
+
+        #submit:hover {
+            background-color: rgb(162, 92, 228);
+        }
+
+        #correct{
+            visibility: hidden;
+        }
+        #instructions{
+            color:black;
+            background-color: rgba(233, 243, 145, 0.678);
+            border-radius: 8px;
+        }
+
+        #answer {
+            font-size: 23px;
+            text-align: center;
+            padding: 0x;
+            background-color: rgb(233, 114, 77);
+            border-radius: 10px;
+            margin: 4px 110px;
+        }
+
+        #answer:hover {
+            background-color: rgb(162, 92, 228);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Pariksha</h1>
+    <nav id="navigation">
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fa fas fa-bars"></i>
+        </label>
+        <a href="student.html">Back</a>
+    </nav>
+    <div id="main">
+        <div id="inner">
+            <h3>General Knowledge Mock Test</h3>
+            <inline class="instructions">
+                <span id="instructions">Instructions</span>
+            </inline>
+            <p id="category"></p>
+            <inline class="timer">
+                Time : <span id="timer"></span>
+            </inline>
+            <p id="question"></p>
+            <div id="options"></div>
+            <div id="correct"></div>
+
+            <button id="answer">Submit</button>
+        </div>
+    </div>
+    <div id="footer">
+        <p>@ 2023 Designed, Developed and Hosted by National Informatics Center NIC</p>
+    </div>
+
+    <script>
+        
+        window.onload = sendApiRequest;
+
+        async function sendApiRequest() {
+            let response = await fetch('https://opentdb.com/api.php?amount=1&difficulty=easy&type=multiple&category=9');
+            console.log(response);
+            let data = await response.json();
+            console.log(data);
+            useApiData(data);
+        }
+
+        let questionCount = 0;
+        let totalQuestion = 10;
+
+        function useApiData(data) {
+            document.querySelector("#category").innerHTML = `Category=${data.results[0].category}`;
+            //document.querySelector("#difficulty").innerHTML = `Difficulty=${data.results[0].difficulty}`;
+            document.querySelector("#question").innerHTML = `Question: ${data.results[0].question}`;
+
+            let correctAnswer = data.results[0].correct_answer;
+            let incorrectAnswers = data.results[0].incorrect_answers;
+            let option = incorrectAnswers;
+
+            option.splice(Math.floor(Math.random() * (incorrectAnswers.length + 1)), 0, correctAnswer);
+            console.log(option);
+
+            options.innerHTML = `
+            ${option.map((option, index) => `
+                <li><input type="radio" name="answer"><span >${option}</span></li>
+                `).join('')}
+            `;
+            questionCount++;
+
+            document.querySelector("#correct").textContent=data.results[0].correct_answer;
+
+            selectOption();
+        }
+
+        let score = 0;
+
+        function selectOption() {
+            options.querySelectorAll("li").forEach((option) => {
+                option.addEventListener("click", () => {
+                    let selectAnswer = option.textContent;
+                    let correctAnswer = document.getElementById("correct").innerHTML;
+
+                    if (selectAnswer == correctAnswer) {
+                        score++;
+                        console.log(score);
+                    }
+                });
+            });
+        }
+
+        let correctBtn = document.querySelector("#answer");
+
+        correctBtn.addEventListener("click", () => {
+            if (questionCount < totalQuestion) {
+                sendApiRequest();
+            } else {
+                inner.innerHTML = `
+                <h3> You Scored ${score}/${totalQuestion} </h3>
+                <p>Congratulations for participating in Quiz</p>
+                <button class="btn" onclick="location.reload()">Reload Test</button>
+            `;
+            }
+        })
+
+
+        var sec = 120;
+        var time = setInterval(myTimer, 1000);
+
+        function myTimer() {
+            document.getElementById("timer").innerHTML = sec + "sec left";
+            sec--;
+            if (sec == -1) {
+                clearInterval(time);
+                inner.innerHTML = `
+                    <h3> You Scored ${score}/${totalQuestion} </h3>
+                    <p>Congratulations for participating in Quiz</p>
+                    <button class="btn" onclick="location.reload()">Reload Test</button>
+                `;
+            }
+        };
+        instructions.addEventListener("click",()=>{
+            inner.innerHTML=`
+                <h3>Please read the instructions carefully</h3>
+                <p>1.Total duration of paper is 2 min.</p>
+                <p> 2.The countdown timer in the top right corner of screen will display the remaining time available for you to complete the examination.</p>
+                <p>3.You are awarded +1 for every correct answer . There is 0 marks for question unattempted.</p>
+                <p>4.There is no negative marking.</p>
+                <button id="submit" onclick="location.reload()">Back</button>
+            `;
+        })
+    </script>
+</body>
+
+</html>
