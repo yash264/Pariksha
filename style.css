@@ -38,10 +38,8 @@ a:hover {
 #submit{
     font-size: 23px;
     text-align: center;
-    padding: 0x;
     background-color: rgb(233, 114, 77);
     border-radius: 10px;
-    margin:4px 610px;
 }
 
 #submit:hover{
