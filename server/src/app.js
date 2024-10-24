@@ -20,7 +20,7 @@ const views_path = path.join(__dirname,"../templates/views");
 const partials_path = path.join(__dirname,"../templates/partials");
 
 const corsOptions ={
-    origin: "http://localhost:3000",
+    origin: "https://pariksha-rust.vercel.app",
     methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
     credentials: true,
 }; 
