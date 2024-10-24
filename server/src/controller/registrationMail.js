@@ -23,9 +23,6 @@ const registrationMail = async(email, studentName) => {
         html:
             ` 
                 <html>
-                    <div>
-                        <img src="cid:logo" width="140px"/>
-                    </div>
                         <h3>Welcome to Pariksha !! </h3>
                         <h5> Dear ${studentName} </h5>
                         <br>
@@ -39,11 +36,6 @@ const registrationMail = async(email, studentName) => {
                     </div>
                 </html>
             `,
-        attachments: [{
-            filename: "Pariksha.jpg",
-            path: "./src/Pariksha.jpg",
-            cid: "logo"
-        }],
     };
     transport.sendMail(mailOptions, (error, success) => {
         if (error) {
