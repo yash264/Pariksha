@@ -11,7 +11,7 @@ const transport = nodemailer.createTransport({
     },
 });
 
-const registrationMail = (email, studentName) => {
+const registrationMail = async(email, studentName) => {
     console.log(email,studentName);
     const mailOptions = {
         from: {
@@ -45,13 +45,18 @@ const registrationMail = (email, studentName) => {
             cid: "logo"
         }],
     };
-    transport.sendMail(mailOptions, (error, success) => {
-        if (error) {
-            console.log(error);
-        } else {
-            console.log("Email sent");
-        }
-    })
+    try{
+        await transport.sendMail(mailOptions, (error, success) => {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log("Email sent");
+            }
+        })
+    }
+    catch(error){
+        console.log(error);
+    }
 }
 
 module.exports = { registrationMail };
