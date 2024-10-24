@@ -14,7 +14,7 @@ function Dashboard() {
 
     axios.defaults.withCredentials = true;
     useEffect(() => {
-        axios.get('http://localhost:3000/dashboard')
+        axios.get('https://parikshaserver.onrender.com/dashboard')
             .then(result => {
                 setValues(result.data.userData);
             })
@@ -25,7 +25,7 @@ function Dashboard() {
 
     const logout=(e)=>{
         e.preventDefault();
-        axios.get('http://localhost:3000/logout')
+        axios.get('https://parikshaserver.onrender.com/logout')
         .then( res=>{
             if(res.data.msg==="success"){
                 navigate("../User/login")
