@@ -14,7 +14,7 @@ function Dashboard() {
 
     axios.defaults.withCredentials = true;
     useEffect(() => {
-        axios.get('https://parikshaserver.onrender.com/dashboard')
+        axios.get('https://parikshaserver.onrender.com/dashboardData')
             .then(result => {
                 setValues(result.data.userData);
             })
