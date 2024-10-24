@@ -41,22 +41,17 @@ const registrationMail = async(email, studentName) => {
             `,
         attachments: [{
             filename: "Pariksha.jpg",
-            path: "../src/Pariksha.jpg",
+            path: "./src/Pariksha.jpg",
             cid: "logo"
         }],
     };
-    try{
-        await transport.sendMail(mailOptions, (error, success) => {
-            if (error) {
-                console.log(error);
-            } else {
-                console.log("Email sent");
-            }
-        })
-    }
-    catch(error){
-        console.log(error);
-    }
+    transport.sendMail(mailOptions, (error, success) => {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log("Email sent");
+        }
+    })
 }
 
 module.exports = { registrationMail };
