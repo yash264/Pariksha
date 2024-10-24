@@ -110,9 +110,9 @@ const verifyUser = async(req,res,next)=>{
 }
 
 // to fetch data to user profile
-app.get("/dashboard",verifyUser, async (req,res)=>{
+app.get("/dashboardData",verifyUser, async (req,res)=>{
     try{
-        const userData = req.body;
+        const userData = await req.body;
         return res.status(200).json({userData});
     }catch(error){
         console.log(error);
@@ -506,7 +506,7 @@ app.post("/leaderBoard",async(req,res)=>{
 })
 
 //  to show the pastQuiz
-app.get("/pastQuiz",verifyUser,async(req,res)=>{
+app.get("/pastQuizes",verifyUser,async(req,res)=>{
     try{
         const email = req.body.email;
         const type = "studentResponse";
