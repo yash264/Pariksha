@@ -16,7 +16,7 @@ function Register() {
     axios.defaults.withCredentials = true;
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post('http://localhost:3000/register', { name, gender, email, password })
+        axios.post('https://parikshaserver.onrender.com/register', { name, gender, email, password })
             .then(result => {
                 if(result.data === "Email Already Exists"){
                     toast.error("Email Id Already Exists")
