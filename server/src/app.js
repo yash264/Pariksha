@@ -113,6 +113,7 @@ const verifyUser = async(req,res,next)=>{
 app.get("/dashboardData",verifyUser, async (req,res)=>{
     try{
         const userData = await req.body;
+        console.log(userData);
         return res.status(200).json({userData});
     }catch(error){
         console.log(error);
