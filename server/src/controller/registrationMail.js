@@ -41,7 +41,7 @@ const registrationMail = async(email, studentName) => {
             `,
         attachments: [{
             filename: "Pariksha.jpg",
-            path: "./src/Pariksha.jpg",
+            path: "../src/Pariksha.jpg",
             cid: "logo"
         }],
     };
