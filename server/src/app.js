@@ -138,10 +138,10 @@ const upload = multer({ storage: storage });
   
 //  to upload the pdf file
 app.post("/uploadPdf", upload.single("file"), async(req,res)=>{
-    const title = req.body.title;
-    const filename = req.file.filename;
-    const date = moment().format();
     try{
+        const title = req.body.title;
+        const filename = req.file.filename;
+        const date = moment().format();
         const _id = "67014558c79b90ed53ef6ec3";
         const type = "pdf";
         uploadedPdf = await StudentData.updateOne({_id:_id},{$push:{UploadedFiles:{type:type,title:title,pdf:filename,date:date}}});
@@ -166,7 +166,7 @@ app.post("/deletePdf", async(req,res)=>{
 app.get("/getFiles", async(req,res)=>{
     try{
         const _id = "67014558c79b90ed53ef6ec3";
-        StudentData.find({_id:_id})
+        await StudentData.find({_id:_id})
         .then((data)=>{
             res.send({data:data});
         })
