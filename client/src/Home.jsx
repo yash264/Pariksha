@@ -6,6 +6,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 
 function Home() {
+
+  const navigate = useNavigate()
+  const redirect = () => {
+    navigate("/User/register");
+  }
   return (
     <div>
       <div class="header">
@@ -53,7 +58,7 @@ function Home() {
               <h4>Prepare, Practise & Perform</h4>
               <p>We believe that learning should be an exciting journey of discovery and achievement. Our platform is designed for quiz enthusiasts, students and curious minds who seek to expand their knowledge, sharphen their skills and challenge themselves in a fun and engaging way.</p>
             </div>
-            <button className="btn btn-outline-danger">Let's Start</button>
+            <button className="btn btn-outline-danger" onClick={()=>redirect()} >Let's Start</button>
           </div>
           <div class="col">
             <div class="p-3">
