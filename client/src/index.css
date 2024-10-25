@@ -1,0 +1,29 @@
+body{
+  text-align: center;
+  padding: 0 px;
+  margin: 0 px;
+}
+
+img{
+  width:160px;
+  text-align: center;
+}
+
+.header{
+  background-color: white;
+  text-align: center;
+}
+
+span{
+  color: brown;
+}
+
+.nav-item:hover{
+  background-color: rgb(233, 143, 118);
+}
+
+.footer{
+  text-align: center;
+  background-color: rgba(20, 20, 20, 0.872);
+  color:white;
+}
