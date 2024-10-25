@@ -78,6 +78,7 @@ function Delete() {
                         <label for="password" class="form-label">Password</label>
                         <input type="password" class="form-control" onChange={(e) => setPassword(e.target.value)} placeholder="Enter your Password" />
                     </div>
+                    <span style={{color:"red"}}>* Remember this action is permanent. Once an account is deleted, data can't be retreived.</span>
                     <div class="col-12">
                         <button type="submit" class="btn btn-outline-primary">Delete Account</button>
                     </div>
