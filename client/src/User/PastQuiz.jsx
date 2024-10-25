@@ -17,7 +17,7 @@ function PastQuiz(){
 
     axios.defaults.withCredentials = true;
     useEffect(()=>{
-        axios.post('https://parikshaserver.onrender.com/pastQuiz',{email})
+        axios.post('https://parikshaserver.onrender.com/pastQuizes',{email})
             .then(result => {
                 setData(result.data.data);
                 setMessage(result.data.message);
