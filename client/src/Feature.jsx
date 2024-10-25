@@ -49,7 +49,7 @@ function Feature() {
                                 <p>1. Builds a dynamic web appliation facilating real time quiz creation and submission.</p>
                                 <p>2. Designed a visual system which sends an auto-generated Email.</p>
                                 <p>3. Developed a platform where Admin can upload a file in pdf format.</p>
-                                <p>4. Implement JWT token to ensure security and privacy of the user.</p>
+                                <p>4. Implement a feature that ensure security and privacy of the user.</p>
                             </div>
                             <br />
                             <div class="container px-4 text-center">
