@@ -85,7 +85,7 @@ function StudyMaterial(){
                                 return <tr>
                                     <td>*</td>
                                     <td>{data.title}</td>
-                                    <td>{moment(data.date).add(330,"minute").format('Do MMM YYYY, h:mm:ss a')}</td>
+                                    <td>{moment(data.date).format('Do MMM YYYY, h:mm:ss a')}</td>
                                     <td><button className="btn btn-outline-success" onClick={() => showPdf(data.pdf)}>Click here</button></td>
                                 </tr>
                             })
