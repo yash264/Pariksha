@@ -42,7 +42,7 @@ function PastQuiz(){
         navigate(`../User/resultWindow/${email}/${quizName}`)
     }
 
-    const filterSort = merge== null ? "" : merge.sort((a,b) => a.quiz.quizDate < b.quiz.quizDate ? 1 : -1)
+    const filterSort = merge.quiz== null ? "" : merge.sort((a,b) => a.quiz.quizDate < b.quiz.quizDate ? 1 : -1)
     
     
     return(
