@@ -117,17 +117,9 @@ function QuizWindow() {
     const interval = useRef()
     
     useEffect(()=>{
-        const ghadi = async () => {
-            try{
-                const samapt = deadline;
-                interval.current = setInterval(() => getTimeLeft(samapt), 1000);
-                return () => clearInterval(interval.current)
-            }
-            catch(error){
-                console.log(error);
-            }
-        }
-        ghadi();
+        const samapt = deadline;
+        interval.current = setInterval(() => getTimeLeft(samapt), 1000);
+        return () => clearInterval(interval.current)
     }, [deadline]);
 
     const navigate = useNavigate()
