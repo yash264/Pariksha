@@ -118,7 +118,7 @@ function QuizWindow() {
     
     useEffect(()=>{
         const ghadi = async () => {
-            try(
+            try{
                 const samapt = deadline;
                 await interval.current = setInterval(() => getTimeLeft(samapt), 1000);
                 return () => clearInterval(interval.current)
