@@ -120,7 +120,7 @@ function QuizWindow() {
         const ghadi = async () => {
             try{
                 const samapt = deadline;
-                await interval.current = setInterval(() => getTimeLeft(samapt), 1000);
+                interval.current = setInterval(() => getTimeLeft(samapt), 1000);
                 return () => clearInterval(interval.current)
             }
             catch(error){
