@@ -109,7 +109,7 @@ function QuizWindow() {
         setMinute(Math.floor((samay / 1000 / 60) % 60));
         setSecond(Math.floor((samay / 1000) % 60));
 
-        if(samay<0){
+        if(samay<-5000){
             showResultWindow();
         }
     }
