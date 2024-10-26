@@ -162,7 +162,7 @@ function QuizWindow() {
                             <div class="row gx-3">
                                 <div class="col">
                                     <div class="p-3">
-                                        deadline Time :<span>{moment(deadline).format('Do MMM YYYY, h:mm:ss a')}</span>
+                                        Deadline Time :<span>{moment(deadline).format('Do MMM YYYY, h:mm:ss a')}</span><br/>
                                         Current Time :<span>{moment(Date.now()).format('Do MMM YYYY, h:mm:ss a')}</span>
                                     </div>
                                 </div>
