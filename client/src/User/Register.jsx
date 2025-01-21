@@ -89,7 +89,7 @@ function Register() {
                         <div className="spinner-border text-primary mt-2" role="status">
                         </div>
                     }
-                    <button type="submit" class="btn btn-primary">Register</button>
+                    <button type="submit" class="btn btn-outline-primary">Register</button>
                 </form>
                 <ToastContainer/>
             </div>
