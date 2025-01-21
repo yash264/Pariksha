@@ -10,11 +10,14 @@ import "bootstrap/dist/js/bootstrap.min.js";
 function Login() {
     const [email, setEmail] = useState([])
     const [password, setPassword] = useState([])
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate()
 
     axios.defaults.withCredentials = true;
     const handleSubmit = (e) => {
         e.preventDefault();
+        setLoading(true);
+        
         axios.post('https://parikshaserver.onrender.com/login', { email, password })
             .then(result => {
                 if(result.data === "success"){
@@ -26,6 +29,7 @@ function Login() {
                 else if(result.data === "Please Register"){
                     toast.error("Please Register");
                 }
+                setLoading(false);
             })
             .catch(error => {
                 console.log(error);
@@ -71,7 +75,12 @@ function Login() {
                         <label for="floatingPassword">Password</label>
                     </div>
                     <br />
-                    <button type="submit" class="btn btn-primary">Login</button>
+                    {
+                        loading && 
+                        <div className="spinner-border text-primary mt-2" role="status">
+                        </div>
+                    }
+                    <button type="submit" class="btn btn-outline-primary">Login</button>
                 </form>
                 <br />
                 <ToastContainer/>
