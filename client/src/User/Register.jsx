@@ -12,10 +12,13 @@ function Register() {
     const [gender, setGender] = useState()
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
+    const [loading, setLoading] = useState(false);
 
     axios.defaults.withCredentials = true;
     const handleSubmit = (e) => {
         e.preventDefault()
+        setLoading(true);
+        
         axios.post('https://parikshaserver.onrender.com/register', { name, gender, email, password })
             .then(result => {
                 if(result.data === "Email Already Exists"){
@@ -24,6 +27,7 @@ function Register() {
                 else if(result.data === "registered"){
                     toast.success("Registered Successfully");
                 }
+                setLoading(false);
             })
             .catch(error => {
                 console.log(error);
@@ -80,6 +84,11 @@ function Register() {
                         <label for="floatingPassword">Password </label>
                     </div>
                     <br />
+                    {
+                        loading && 
+                        <div className="spinner-border text-primary mt-2" role="status">
+                        </div>
+                    }
                     <button type="submit" class="btn btn-primary">Register</button>
                 </form>
                 <ToastContainer/>
